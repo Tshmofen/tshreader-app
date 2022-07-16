@@ -3,9 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.2.32516.85
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "tshreader.Android", "tshreader\tshreader.Android\tshreader.Android.csproj", "{7A67DF4D-D43F-4D12-866B-7A7347CD10C3}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Library", "Library", "{D1594B86-AD73-4D83-880F-58FDC8D71211}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "tshreader", "tshreader\tshreader\tshreader.csproj", "{868036A0-E7B3-4840-A9EB-B4E5739B1B16}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{47B01B37-E99F-46AD-9B99-CA55BA0567F4}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "tshreader", "tshreader\tshreader.csproj", "{B9E03BF8-AC51-4194-9569-CB8AE2C28BED}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "tshreader.core", "tshreader.core\tshreader.core.csproj", "{FCA1140F-37CE-451E-8F0B-12DA9E0F403B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "tshreader.services", "tshreader.services\tshreader.services.csproj", "{39458BC6-EA07-4B6E-B1BD-BA21B474AE48}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,21 +19,28 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{7A67DF4D-D43F-4D12-866B-7A7347CD10C3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7A67DF4D-D43F-4D12-866B-7A7347CD10C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7A67DF4D-D43F-4D12-866B-7A7347CD10C3}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
-		{7A67DF4D-D43F-4D12-866B-7A7347CD10C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7A67DF4D-D43F-4D12-866B-7A7347CD10C3}.Release|Any CPU.Build.0 = Release|Any CPU
-		{7A67DF4D-D43F-4D12-866B-7A7347CD10C3}.Release|Any CPU.Deploy.0 = Release|Any CPU
-		{868036A0-E7B3-4840-A9EB-B4E5739B1B16}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{868036A0-E7B3-4840-A9EB-B4E5739B1B16}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{868036A0-E7B3-4840-A9EB-B4E5739B1B16}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
-		{868036A0-E7B3-4840-A9EB-B4E5739B1B16}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{868036A0-E7B3-4840-A9EB-B4E5739B1B16}.Release|Any CPU.Build.0 = Release|Any CPU
-		{868036A0-E7B3-4840-A9EB-B4E5739B1B16}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{B9E03BF8-AC51-4194-9569-CB8AE2C28BED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B9E03BF8-AC51-4194-9569-CB8AE2C28BED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B9E03BF8-AC51-4194-9569-CB8AE2C28BED}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{B9E03BF8-AC51-4194-9569-CB8AE2C28BED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B9E03BF8-AC51-4194-9569-CB8AE2C28BED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B9E03BF8-AC51-4194-9569-CB8AE2C28BED}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{FCA1140F-37CE-451E-8F0B-12DA9E0F403B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FCA1140F-37CE-451E-8F0B-12DA9E0F403B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FCA1140F-37CE-451E-8F0B-12DA9E0F403B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FCA1140F-37CE-451E-8F0B-12DA9E0F403B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{39458BC6-EA07-4B6E-B1BD-BA21B474AE48}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{39458BC6-EA07-4B6E-B1BD-BA21B474AE48}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{39458BC6-EA07-4B6E-B1BD-BA21B474AE48}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{39458BC6-EA07-4B6E-B1BD-BA21B474AE48}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{B9E03BF8-AC51-4194-9569-CB8AE2C28BED} = {47B01B37-E99F-46AD-9B99-CA55BA0567F4}
+		{FCA1140F-37CE-451E-8F0B-12DA9E0F403B} = {D1594B86-AD73-4D83-880F-58FDC8D71211}
+		{39458BC6-EA07-4B6E-B1BD-BA21B474AE48} = {D1594B86-AD73-4D83-880F-58FDC8D71211}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A56ACF81-FA31-4C70-8EEF-89FB9C60B8CF}
