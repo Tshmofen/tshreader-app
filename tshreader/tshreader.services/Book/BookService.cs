@@ -19,7 +19,7 @@ internal class BookService : IBookService
 
     #region Util
 
-    private static AsyncTableQuery<eBook> ApplySearchTerms(AsyncTableQuery<eBook> table, string? name, string? author)
+    private static AsyncTableQuery<eBook> ApplySearchTerms(AsyncTableQuery<eBook> table, string name, string author)
     {
         if (!string.IsNullOrEmpty(name))
         {
@@ -36,12 +36,12 @@ internal class BookService : IBookService
 
     #endregion
 
-    public async Task<int> CountBooksAsync(string? name = null, string? author = null)
+    public async Task<int> CountBooksAsync(string name = null, string author = null)
     {
         return await _repository.CountAsync((table) => ApplySearchTerms(table, name, author));
     }
 
-    public async Task<IList<eBook>> GetBooksAsync(string? name = null, string? author = null, int pageIndex = 0, int pageSize = int.MaxValue)
+    public async Task<IList<eBook>> GetBooksAsync(string name = null, string author = null, int pageIndex = 0, int pageSize = int.MaxValue)
     {
         return await _repository.GetAllAsync((table) => ApplySearchTerms(table, name, author), pageIndex, pageSize);
     }
