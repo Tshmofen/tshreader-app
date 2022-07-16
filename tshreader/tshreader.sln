@@ -1,0 +1,35 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32516.85
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "tshreader.Android", "tshreader\tshreader.Android\tshreader.Android.csproj", "{7A67DF4D-D43F-4D12-866B-7A7347CD10C3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "tshreader", "tshreader\tshreader\tshreader.csproj", "{868036A0-E7B3-4840-A9EB-B4E5739B1B16}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7A67DF4D-D43F-4D12-866B-7A7347CD10C3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7A67DF4D-D43F-4D12-866B-7A7347CD10C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7A67DF4D-D43F-4D12-866B-7A7347CD10C3}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{7A67DF4D-D43F-4D12-866B-7A7347CD10C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7A67DF4D-D43F-4D12-866B-7A7347CD10C3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7A67DF4D-D43F-4D12-866B-7A7347CD10C3}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{868036A0-E7B3-4840-A9EB-B4E5739B1B16}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{868036A0-E7B3-4840-A9EB-B4E5739B1B16}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{868036A0-E7B3-4840-A9EB-B4E5739B1B16}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{868036A0-E7B3-4840-A9EB-B4E5739B1B16}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{868036A0-E7B3-4840-A9EB-B4E5739B1B16}.Release|Any CPU.Build.0 = Release|Any CPU
+		{868036A0-E7B3-4840-A9EB-B4E5739B1B16}.Release|Any CPU.Deploy.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A56ACF81-FA31-4C70-8EEF-89FB9C60B8CF}
+	EndGlobalSection
+EndGlobal
