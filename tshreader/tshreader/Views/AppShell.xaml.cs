@@ -1,10 +1,9 @@
-﻿namespace tshreader
+﻿namespace tshreader.Views;
+
+public partial class AppShell
 {
-    public partial class AppShell : Shell
+    public AppShell()
     {
-        public AppShell()
-        {
-            InitializeComponent();
-        }
+        InitializeComponent();
     }
 }

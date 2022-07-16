@@ -1,12 +1,10 @@
-﻿namespace tshreader
-{
-    public partial class App : Application
-    {
-        public App()
-        {
-            InitializeComponent();
+﻿namespace tshreader.Views;
 
-            MainPage = new AppShell();
-        }
+public partial class App
+{
+    public App()
+    {
+        InitializeComponent();
+        MainPage = new AppShell();
     }
 }
