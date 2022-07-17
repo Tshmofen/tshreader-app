@@ -48,8 +48,13 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <None Remove="Resources\Images\white_bricks_seamless.jpg" />
+	</ItemGroup>
+
+	<ItemGroup>
 	  <PackageReference Include="JetBrains.Annotations" Version="2022.1.0" />
 	  <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="6.0.0" />
+	  <PackageReference Include="ParallelExtensionsExtras" Version="1.2.0" />
 	</ItemGroup>
 
 	<ItemGroup>

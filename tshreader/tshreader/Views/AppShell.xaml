@@ -6,15 +6,16 @@
     xmlns:local="clr-namespace:tshreader.Views.Books"
     Shell.FlyoutBehavior="Disabled">
 
-    <Tab Title="Books"
-         Route="domestic">
+    <Tab Title="Books">
+
+        <ShellContent Title="All"
+                      ContentTemplate="{DataTemplate local:AllBooksPage}"
+                      Route="AllBooks" />
 
         <ShellContent Title="Recent"
                       ContentTemplate="{DataTemplate local:RecentBooksPage}"
                       Route="RecentBooks" />
-        <ShellContent Title="All"
-                      ContentTemplate="{DataTemplate local:AllBooksPage}"
-                      Route="AllBooks" />
+
     </Tab>
 
 </Shell>

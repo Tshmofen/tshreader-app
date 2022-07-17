@@ -1,4 +1,4 @@
-﻿namespace tshreader.ViewModels.Common;
+﻿namespace tshreader.ViewModels.Books;
 
 public class RecentBooksViewModel : BaseViewModel
 {
