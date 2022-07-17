@@ -18,7 +18,7 @@ public class EntityRepository<TEntity> : IRepository<TEntity> where TEntity : Ba
 
     #endregion
 
-    public async Task<int> CountAsync(Func<AsyncTableQuery<TEntity>, AsyncTableQuery<TEntity>>? applySearchTerms = null)
+    public async Task<int> CountAsync(Func<AsyncTableQuery<TEntity>, AsyncTableQuery<TEntity>> applySearchTerms = null)
     {
         var table = _database.Table<TEntity>();
 
@@ -30,7 +30,7 @@ public class EntityRepository<TEntity> : IRepository<TEntity> where TEntity : Ba
         return await table.CountAsync();
     }
 
-    public async Task<IList<TEntity>> GetAllAsync(Func<AsyncTableQuery<TEntity>, AsyncTableQuery<TEntity>>? applySearchTerms = null,
+    public async Task<IList<TEntity>> GetAllAsync(Func<AsyncTableQuery<TEntity>, AsyncTableQuery<TEntity>> applySearchTerms = null,
         int pageIndex = 0, int pageSize = int.MaxValue)
     {
         var table = _database.Table<TEntity>();
