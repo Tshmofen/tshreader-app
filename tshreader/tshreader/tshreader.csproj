@@ -48,8 +48,36 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <None Remove="Resources\Images\white_bricks_seamless.jpg" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <PackageReference Include="JetBrains.Annotations" Version="2022.1.0" />
+	  <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="6.0.0" />
+	  <PackageReference Include="ParallelExtensionsExtras" Version="1.2.0" />
+	</ItemGroup>
+
+	<ItemGroup>
 	  <ProjectReference Include="..\tshreader.core\tshreader.core.csproj" />
 	  <ProjectReference Include="..\tshreader.services\tshreader.services.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Compile Update="Views\Books\AllBooksPage.xaml.cs">
+	    <DependentUpon>AllBooksPage.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\Books\RecentBooksPage.xaml.cs">
+	    <DependentUpon>RecentBooksPage.xaml</DependentUpon>
+	  </Compile>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiXaml Update="Views\Books\AllBooksPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Books\RecentBooksPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	</ItemGroup>
 
 </Project>

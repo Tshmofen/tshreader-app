@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:books="clr-namespace:tshreader.ViewModels.Books;assembly=tshreader"
+             xmlns:bookModels="clr-namespace:tshreader.services.Models.Books;assembly=tshreader.services"
+             x:Class="tshreader.Views.Books.AllBooksPage"
+             x:DataType="books:AllBooksViewModel"
+             Title="{Binding Title}">
+
+    <ScrollView>
+        <VerticalStackLayout Spacing="25" Padding="30,0">
+
+            <StackLayout BindableLayout.ItemsSource="{Binding BooksCollection}">
+                <BindableLayout.ItemTemplate>
+                    <DataTemplate>
+
+                        <Frame x:DataType="bookModels:BookModel">
+                            <Label Text="{Binding Name}"/>
+                            <!--<Frame.GestureRecognizers>
+                                <TapGestureRecognizer 
+                                    Command="{Binding Source={RelativeSource AncestorType={x:Type promo:PromoCodesViewModel}}, Path=OpenPromoCodeCommand}"
+                                    CommandParameter="{Binding Id}"/>
+                            </Frame.GestureRecognizers>-->
+                        </Frame>
+
+                    </DataTemplate>
+                </BindableLayout.ItemTemplate>
+            </StackLayout>
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>
