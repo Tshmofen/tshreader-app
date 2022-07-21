@@ -10,7 +10,7 @@ public static class DatabaseDefaults
         return await connection.ExecuteScalarAsync<int>("SELECT last_insert_rowid()");
     }
 
-    public const string DatabaseFilename = "PromoStorage.db3";
+    public const string DatabaseFilename = "tshreader_storage.db3";
 
     // create if doesn't exist
     // multi-threaded database access

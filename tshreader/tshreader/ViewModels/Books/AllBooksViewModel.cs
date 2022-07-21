@@ -1,18 +1,22 @@
 ﻿using System.Collections.Concurrent;
+using tshreader.core.Domain.Defaults;
 using tshreader.services.Models.Books;
 using tshreader.services.Services.Books;
+using tshreader.services.Services.Settings;
 
 namespace tshreader.ViewModels.Books;
 
 public class AllBooksViewModel : BaseViewModel
 {
     private readonly IBookService _bookService;
+    private readonly ISettingService _settingService;
 
     public ObservableConcurrentCollection<BookModel> BooksCollection { get; }
 
-    public AllBooksViewModel(IBookService bookService)
+    public AllBooksViewModel(IBookService bookService, ISettingService settingService)
     {
         _bookService = bookService;
+        _settingService = settingService;
 
         Title = "All Books";
         BooksCollection = new ObservableConcurrentCollection<BookModel>();
@@ -21,15 +25,8 @@ public class AllBooksViewModel : BaseViewModel
 
     private async void LoadBooks()
     {
-        await _bookService.AddBookAsync(new BookModel
-        {
-            Name = "Some Name",
-            Author = "Some Author"
-        });
-
-        Thread.Sleep(2000);
-
-        var books = await _bookService.GetBooksAsync();
+        var folder = await _settingService.GetSettingAsync(SettingsDefaults.CurrentBooksFolderSetting);
+        var books = await _bookService.GetBooksFromFileSystemAsync(folder ?? string.Empty);
         BooksCollection.AddFromEnumerable(books);
     }
 }

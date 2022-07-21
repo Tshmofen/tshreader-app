@@ -9,9 +9,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentatio
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "tshreader", "tshreader\tshreader.csproj", "{B9E03BF8-AC51-4194-9569-CB8AE2C28BED}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "tshreader.core", "tshreader.core\tshreader.core.csproj", "{FCA1140F-37CE-451E-8F0B-12DA9E0F403B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "tshreader.core", "tshreader.core\tshreader.core.csproj", "{FCA1140F-37CE-451E-8F0B-12DA9E0F403B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "tshreader.services", "tshreader.services\tshreader.services.csproj", "{39458BC6-EA07-4B6E-B1BD-BA21B474AE48}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "tshreader.services", "tshreader.services\tshreader.services.csproj", "{39458BC6-EA07-4B6E-B1BD-BA21B474AE48}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

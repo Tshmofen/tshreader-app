@@ -3,18 +3,23 @@
     x:Class="tshreader.Views.AppShell"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:local="clr-namespace:tshreader.Views.Books"
+    xmlns:books="clr-namespace:tshreader.Views.Books"
+    xmlns:common="clr-namespace:tshreader.Views.Common"
     Shell.FlyoutBehavior="Disabled">
 
-    <Tab Title="Books">
+    <Tab Title="Books" Route="Books">
 
         <ShellContent Title="All"
-                      ContentTemplate="{DataTemplate local:AllBooksPage}"
+                      ContentTemplate="{DataTemplate books:AllBooksPage}"
                       Route="AllBooks" />
 
         <ShellContent Title="Recent"
-                      ContentTemplate="{DataTemplate local:RecentBooksPage}"
+                      ContentTemplate="{DataTemplate books:RecentBooksPage}"
                       Route="RecentBooks" />
+
+        <ShellContent Title="Settings"
+                      ContentTemplate="{DataTemplate common:SettingsPage}"
+                      Route="Settings" />
 
     </Tab>
 

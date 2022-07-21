@@ -1,4 +1,5 @@
-﻿using tshreader.core.Domain.Models.Books;
+﻿using System.Reflection;
+using tshreader.core.Domain.Models.Books;
 using tshreader.core.Domain.Models.Media;
 using tshreader.core.Domain.Models.Resources;
 using tshreader.core.Domain.Models.Settings;
@@ -9,6 +10,7 @@ using tshreader.services.Services.Resources;
 using tshreader.services.Services.Settings;
 using tshreader.ViewModels.Books;
 using tshreader.ViewModels;
+using tshreader.Views;
 
 namespace tshreader.Infrastructure;
 
@@ -31,6 +33,7 @@ public static class AppInfrastructure
         }
 
         InitializeServices();
+
         _isResolved = true;
     }
 
@@ -56,8 +59,16 @@ public static class AppInfrastructure
         services.AddSingleton<ITextResourceService, TextResourceService>();
 
         // view models
-        services.AddTransient<RecentBooksViewModel>();
-        services.AddTransient<AllBooksViewModel>();
+
+        var viewModelTypes = Assembly
+            .GetAssembly(typeof(App))!
+            .GetTypes()
+            .Where(t => t.IsSubclassOf(typeof(BaseViewModel)));
+
+        foreach (var viewModelType in viewModelTypes)
+        {
+            services.AddTransient(viewModelType);
+        }
 
         ServiceProvider = services.BuildServiceProvider();
     }

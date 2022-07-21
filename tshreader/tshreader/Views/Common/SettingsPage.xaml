@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="tshreader.Views.Common.SettingsPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:common="clr-namespace:tshreader.ViewModels.Common;assembly=tshreader"
+    Title="{Binding Title}"
+    x:DataType="common:SettingsViewModel">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="30,0">
+
+            <Label Text="Current Books Folder:" />
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="120" />
+                </Grid.ColumnDefinitions>
+
+                <Entry Grid.Column="0" Text="{Binding CurrentFolder}" ReturnCommand="{Binding SetFolderCommand}"/>
+                <Button Grid.Column="1" Text="Pick Book" Command="{Binding SelectFolderCommand}"/>
+            </Grid>
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>

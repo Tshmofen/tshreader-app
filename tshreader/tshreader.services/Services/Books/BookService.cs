@@ -1,5 +1,9 @@
 ﻿using AutoMapper;
+using FB2Library;
 using SQLite;
+using System.Diagnostics;
+using System.Xml;
+using Microsoft.Maui.Controls;
 using tshreader.core.Domain.Models.Books;
 using tshreader.core.Repository;
 using tshreader.services.Models.Books;
@@ -74,5 +78,66 @@ public class BookService : IBookService
     public async Task DeleteBookAsync(int id)
     {
         await _repository.DeleteAsync(id);
+    }
+
+    public async Task<IList<BookModel>> GetBooksFromFileSystemAsync(string path)
+    {
+        var bookModels = new List<BookModel>();
+
+        if (!Directory.Exists(path))
+        {
+            return bookModels;
+        }
+
+        var files = Directory.GetFiles(path, "*.fb2");
+        var reader = new FB2Reader();
+
+        foreach (var filePath in files)
+        {
+            var readerSettings = new XmlReaderSettings
+            {
+                DtdProcessing = DtdProcessing.Ignore
+            };
+            var loadSettings = new XmlLoadSettings(readerSettings);
+
+            try
+            {
+                var stream = File.OpenRead(filePath);
+                var fb2File = await reader.ReadAsync(stream, loadSettings);
+                var author = fb2File.TitleInfo?.BookAuthors?.FirstOrDefault();
+
+                var bookModel = new BookModel
+                {
+                    Name = fb2File.TitleInfo?.BookTitle?.Text ?? filePath
+                };
+
+                if (author != null)
+                {
+                    bookModel.Author = author.FirstName + " " + author.MiddleName + " " + author.LastName;
+                }
+
+                var coverInfo = fb2File.TitleInfo?.Cover?.CoverpageImages?.FirstOrDefault();
+                if (coverInfo != null)
+                {
+                    var key = coverInfo.HRef.Replace("#", string.Empty);
+                    var imageInfo = fb2File.Images
+                        .FirstOrDefault(i => i.Key == key);
+                    var imageBinary = imageInfo.Value.BinaryData;
+
+                    if (imageBinary != null)
+                    {
+                        bookModel.Image = ImageSource.FromStream(() => new MemoryStream(imageBinary));
+                    }
+                }
+
+                bookModels.Add(bookModel);
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"Error loading file : {ex.Message}");
+            }
+        }
+
+        return bookModels;
     }
 }

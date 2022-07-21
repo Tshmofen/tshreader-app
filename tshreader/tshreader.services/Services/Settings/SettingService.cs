@@ -1,7 +1,5 @@
-﻿using AutoMapper;
-using tshreader.core.Domain.Models.Settings;
+﻿using tshreader.core.Domain.Models.Settings;
 using tshreader.core.Repository;
-using tshreader.services.Models.Settings;
 
 namespace tshreader.services.Services.Settings;
 
@@ -10,41 +8,59 @@ public class SettingService : ISettingService
     #region Ctor
 
     private readonly IRepository<Setting> _repository;
-    private readonly IMapper _mapper;
 
-    public SettingService(IRepository<Setting> repository, IMapper mapper)
+    public SettingService(IRepository<Setting> repository)
     {
         _repository = repository;
-        _mapper = mapper;
     }
 
     #endregion
-    public async Task<SettingModel> GetSettingAsync(string name)
+    public async Task<string> GetSettingAsync(string name)
     {
+        if (name == null)
+        {
+            throw new ArgumentNullException(nameof(name));
+        }
+
         var setting = await _repository.GetAsync((table) => table.Where(s => s.Name == name));
-        return _mapper.Map<Setting, SettingModel>(setting);
+        return setting?.Value;
     }
 
-    public async Task<SettingModel> GetSettingAsync(int id)
+    public async Task SetSettingAsync(string name, string value)
     {
-        var setting = await _repository.GetAsync(id);
-        return _mapper.Map<Setting, SettingModel>(setting);
+        if (name == null)
+        {
+            throw new ArgumentNullException(nameof(name));
+        }
+
+        if (value == null)
+        {
+            throw new ArgumentNullException(nameof(value));
+        }
+
+        var existingSetting = await _repository.GetAsync((table) => table.Where(s => s.Name == name));
+        if (existingSetting == null)
+        {
+            await _repository.AddAsync(new Setting
+            {
+                Name = name,
+                Value = value
+            });
+        }
+        else
+        {
+            existingSetting.Value = value;
+            await _repository.UpdateAsync(existingSetting);
+        }
     }
 
-    public async Task AddSettingAsync(SettingModel settingModel)
+    public async Task DeleteSettingAsync(string name)
     {
-        var setting = _mapper.Map<SettingModel, Setting>(settingModel);
-        await _repository.AddAsync(setting);
-    }
+        if (name == null)
+        {
+            throw new ArgumentNullException(nameof(name));
+        }
 
-    public async Task UpdateSettingAsync(SettingModel settingModel)
-    {
-        var setting = _mapper.Map<SettingModel, Setting>(settingModel);
-        await _repository.UpdateAsync(setting);
-    }
-
-    public async Task DeleteSettingAsync(int id)
-    {
-        await _repository.DeleteAsync(id);
+        await _repository.DeleteAsync((table) => table.Where(s => s.Name == name));
     }
 }

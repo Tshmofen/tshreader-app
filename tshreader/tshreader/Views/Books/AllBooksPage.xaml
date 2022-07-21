@@ -8,24 +8,34 @@
              Title="{Binding Title}">
 
     <ScrollView>
-        <VerticalStackLayout Spacing="25" Padding="30,0">
+        <VerticalStackLayout Padding="30,0">
 
-            <StackLayout BindableLayout.ItemsSource="{Binding BooksCollection}">
+            <FlexLayout BindableLayout.ItemsSource="{Binding BooksCollection}"
+                        JustifyContent="Center"
+                        Wrap="Wrap">
                 <BindableLayout.ItemTemplate>
                     <DataTemplate>
 
-                        <Frame x:DataType="bookModels:BookModel">
-                            <Label Text="{Binding Name}"/>
+                        <Border x:DataType="bookModels:BookModel" Padding="5" Margin="5" WidthRequest="220">
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="5"></RoundRectangle>
+                            </Border.StrokeShape>
+
+                            <StackLayout>
+                                <Image Source="{Binding Image}"></Image>
+                                <Label Text="{Binding Name}" HorizontalOptions="Center"/>
+                            </StackLayout>
+
                             <!--<Frame.GestureRecognizers>
-                                <TapGestureRecognizer 
-                                    Command="{Binding Source={RelativeSource AncestorType={x:Type promo:PromoCodesViewModel}}, Path=OpenPromoCodeCommand}"
-                                    CommandParameter="{Binding Id}"/>
-                            </Frame.GestureRecognizers>-->
-                        </Frame>
+                                    <TapGestureRecognizer 
+                                            Command="{Binding Source={RelativeSource AncestorType={x:Type promo:PromoCodesViewModel}}, Path=OpenPromoCodeCommand}"
+                                            CommandParameter="{Binding Id}"/>
+                                </Frame.GestureRecognizers>-->
+                        </Border>
 
                     </DataTemplate>
                 </BindableLayout.ItemTemplate>
-            </StackLayout>
+            </FlexLayout>
 
         </VerticalStackLayout>
     </ScrollView>

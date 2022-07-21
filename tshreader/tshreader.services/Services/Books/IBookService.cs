@@ -9,4 +9,5 @@ public interface IBookService
     Task AddBookAsync(BookModel bookModel);
     Task UpdateBookAsync(BookModel bookModel);
     Task DeleteBookAsync(int id);
+    Task<IList<BookModel>> GetBooksFromFileSystemAsync(string path);
 }

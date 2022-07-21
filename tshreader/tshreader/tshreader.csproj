@@ -54,7 +54,7 @@
 	<ItemGroup>
 	  <PackageReference Include="JetBrains.Annotations" Version="2022.1.0" />
 	  <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="6.0.0" />
-	  <PackageReference Include="ParallelExtensionsExtras" Version="1.2.0" />
+	  <PackageReference Include="ParallelExtensionsExtras.NetFxStandard" Version="1.4.0" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -69,6 +69,9 @@
 	  <Compile Update="Views\Books\RecentBooksPage.xaml.cs">
 	    <DependentUpon>RecentBooksPage.xaml</DependentUpon>
 	  </Compile>
+	  <Compile Update="Views\Common\SettingsPage.xaml.cs">
+	    <DependentUpon>SettingsPage.xaml</DependentUpon>
+	  </Compile>
 	</ItemGroup>
 
 	<ItemGroup>
@@ -76,6 +79,9 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\Books\RecentBooksPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Common\SettingsPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>

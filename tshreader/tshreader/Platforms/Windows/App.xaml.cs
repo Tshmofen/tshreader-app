@@ -1,22 +1,29 @@
-﻿using Microsoft.UI.Xaml;
+﻿using Microsoft.UI;
+using Windows.Graphics;
+using Microsoft.Maui.Handlers;
+using Microsoft.UI.Windowing;
+using WinRT.Interop;
 
-// To learn more about WinUI, the WinUI project structure,
-// and more about our project templates, see: http://aka.ms/winui-project-info.
-
+// ReSharper disable once CheckNamespace
 namespace tshreader.WinUI;
 
-/// <summary>
-/// Provides application-specific behavior to supplement the default Application class.
-/// </summary>
-public partial class App : MauiWinUIApplication
+public partial class App
 {
-    /// <summary>
-    /// Initializes the singleton application object.  This is the first line of authored code
-    /// executed, and as such is the logical equivalent of main() or WinMain().
-    /// </summary>
     public App()
     {
-        this.InitializeComponent();
+        WindowHandler.Mapper.AppendToMapping(nameof(IWindow), (handler, _) =>
+        {
+            var nativeWindow = handler.PlatformView;
+            nativeWindow.Activate();
+
+            var windowHandle = WindowNative.GetWindowHandle(nativeWindow);
+            var windowId = Win32Interop.GetWindowIdFromWindow(windowHandle);
+            var appWindow = AppWindow.GetFromWindowId(windowId);
+
+            appWindow.Resize(new SizeInt32(600, 800));
+        });
+
+        InitializeComponent();
     }
 
     protected override MauiApp CreateMauiApp() => MauiProgram.CreateMauiApp();
